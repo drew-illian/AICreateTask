@@ -1,3 +1,7 @@
+def random_word():
+  words = ["apple", "banana", "carrot" , "potato"]
+  import random
+  return random.choice(words)
 print( "Welcome to Hangaman! You will have 10 guesses of letters to try and guess the six letter word word. If you get a letter correct, you get your guess back!" )
 score = 10
 while score != 0:
@@ -5,7 +9,7 @@ while score != 0:
     user = input()
     user=user.split(" ")
     suser=[x.lower()for x in user]
-    word = ["carrot"]
+    word = [random_word()]
     if suser == word:
         score += 1
         print("Correct! You get a life back, and you win!")
@@ -18,16 +22,18 @@ while score != 0:
         print("Your new score is now ", score)
         if score == 0:
             print("You lose!")
-
-print("If you want to play again, type yes, if you are done for now, type no.")
-answer=input()
-answer=answer.split(" ")
-sanswer=[x.lower()for x in answer]
-yes=["yes"]
-no=["no"]
-if sanswer == no:
-        print("Thanks for playing my game!")
-elif sanswer == yes:
-    print("OK! Try and beat your high score!")
-else:
-    print("Please enter a correct input.")
+while True:
+  print("If you want to play again, type yes, if you are done for now, type no.")
+  answer=input()
+  answer=answer.split(" ")
+  sanswer=[x.lower()for x in answer]
+  yes=["yes"]
+  no=["no"]
+  if sanswer == no:
+          print("Thanks for playing my game!")
+          break
+  elif sanswer == yes:
+      print("OK! Try and beat your high score!")
+      break
+  else:
+      print("Please enter a correct input.")
